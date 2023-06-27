@@ -26,7 +26,7 @@ export default function DashboardAppPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | Minimal UI </title>
+        <title> Dashboard | Rhema Health Tracker  </title>
       </Helmet>
 
       <Container maxWidth="xl">
@@ -36,37 +36,37 @@ export default function DashboardAppPage() {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Weekly Sales" total={714000} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title="Weekly distance" total={714000} icon={'foundation:foot'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="New Users" total={1352831} color="info" icon={'ant-design:apple-filled'} />
+            <AppWidgetSummary title="Daily Distance" total={1352831} color="info" icon={'material-symbols:social-distance'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Item Orders" total={1723315} color="warning" icon={'ant-design:windows-filled'} />
+            <AppWidgetSummary title="Calories" total="345" color="warning" icon={'icon-park:fire'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Bug Reports" total={234} color="error" icon={'ant-design:bug-filled'} />
+            <AppWidgetSummary title="sleep" total="897" color="error" icon={'icon-park:sleep'} />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
             <AppWebsiteVisits
-              title="Website Visits"
-              subheader="(+43%) than last year"
+              title="Heart Rate"
+              subheader="82-90 BPM"
               chartLabels={[
-                '01/01/2003',
-                '02/01/2003',
-                '03/01/2003',
-                '04/01/2003',
-                '05/01/2003',
-                '06/01/2003',
-                '07/01/2003',
-                '08/01/2003',
-                '09/01/2003',
-                '10/01/2003',
-                '11/01/2003',
+                '01/01/2023',
+                '02/01/2023',
+                '03/01/2023',
+                '04/01/2023',
+                '05/01/2023',
+                '06/01/2023',
+                '07/01/2023',
+                '08/01/2023',
+                '09/01/2023',
+                '10/01/2023',
+                '11/01/2023',
               ]}
               chartData={[
                 {
@@ -93,12 +93,12 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={4}>
             <AppCurrentVisits
-              title="Current Visits"
+              title="Todays Activity"
               chartData={[
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-                { label: 'Europe', value: 1443 },
-                { label: 'Africa', value: 4443 },
+                { label: 'Strething', value: 4344 },
+                { label: 'CrossFit', value: 5435 },
+                { label: 'Yoga', value: 1443 },
+                { label: 'Aerobics', value: 4443 },
               ]}
               chartColors={[
                 theme.palette.primary.main,
@@ -111,7 +111,7 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={8}>
             <AppConversionRates
-              title="Conversion Rates"
+              title="Running Challenges"
               subheader="(+43%) than last year"
               chartData={[
                 { label: 'Italy', value: 400 },
@@ -130,8 +130,8 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={4}>
             <AppCurrentSubject
-              title="Current Subject"
-              chartLabels={['English', 'History', 'Physics', 'Geography', 'Chinese', 'Math']}
+              title="Current Sport"
+              chartLabels={['Soccer', 'Basketball', 'Volley Ball', 'Rugby', 'Tennis', 'Net Ball']}
               chartData={[
                 { name: 'Series 1', data: [80, 50, 30, 40, 100, 20] },
                 { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
@@ -160,7 +160,7 @@ export default function DashboardAppPage() {
               list={[...Array(5)].map((_, index) => ({
                 id: faker.datatype.uuid(),
                 title: [
-                  '1983, orders, $4220',
+                  '2023, orders, 4220',
                   '12 Invoices have been paid',
                   'Order #37745 from September',
                   'New order placed #XF-2356',

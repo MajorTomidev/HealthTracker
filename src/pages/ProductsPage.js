@@ -1,50 +1,52 @@
 import { Helmet } from 'react-helmet-async';
-import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 // @mui
-import { Container, Stack, Typography } from '@mui/material';
-// components
-import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
-// mock
-import PRODUCTS from '../_mock/products';
+import { styled } from '@mui/material/styles';
+import { Button, Typography, Container, Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-export default function ProductsPage() {
-  const [openFilter, setOpenFilter] = useState(false);
+const StyledContent = styled('div')(({ theme }) => ({
+  maxWidth: 480,
+  margin: 'auto',
+  minHeight: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  padding: theme.spacing(12, 0),
+}));
 
-  const handleOpenFilter = () => {
-    setOpenFilter(true);
-  };
+// ----------------------------------------------------------------------
 
-  const handleCloseFilter = () => {
-    setOpenFilter(false);
-  };
-
+export default function Page404() {
   return (
-    <>
-      <Helmet>
-        <title> Dashboard: Products | Minimal UI </title>
-      </Helmet>
+      <>
+        <Helmet>
+          <title> 404 Page Not Found |  Rhema Health Tracker </title>
+        </Helmet>
 
-      <Container>
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          Products
-        </Typography>
+        <Container>
+          <StyledContent sx={{ textAlign: 'center', alignItems: 'center' }}>
+            <Typography variant="h3" paragraph>
+              Sorry, page not found!
+            </Typography>
 
-        <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
-          <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-            <ProductFilterSidebar
-              openFilter={openFilter}
-              onOpenFilter={handleOpenFilter}
-              onCloseFilter={handleCloseFilter}
+            <Typography sx={{ color: 'text.secondary' }}>
+              Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL? Be sure to check your
+              spelling.
+            </Typography>
+
+            <Box
+                component="img"
+                src="/assets/illustrations/illustration_404.svg"
+                sx={{ height: 260, mx: 'auto', my: { xs: 5, sm: 10 } }}
             />
-            <ProductSort />
-          </Stack>
-        </Stack>
 
-        <ProductList products={PRODUCTS} />
-        <ProductCartWidget />
-      </Container>
-    </>
+            <Button to="/" size="large" variant="contained" component={RouterLink}>
+              Go to Home
+            </Button>
+          </StyledContent>
+        </Container>
+      </>
   );
 }

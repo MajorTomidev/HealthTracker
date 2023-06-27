@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
@@ -25,6 +26,9 @@ const MENU_OPTIONS = [
 // ----------------------------------------------------------------------
 
 export default function AccountPopover() {
+
+const navigate = useNavigate();
+
   const [open, setOpen] = useState(null);
 
   const handleOpen = (event) => {
@@ -33,6 +37,10 @@ export default function AccountPopover() {
 
   const handleClose = () => {
     setOpen(null);
+  };
+
+  const handleClick = () => {
+    navigate('/login', { replace: true });
   };
 
   return (
@@ -97,7 +105,7 @@ export default function AccountPopover() {
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <MenuItem onClick={handleClose} sx={{ m: 1 }}>
+        <MenuItem onClick={handleClick} sx={{ m: 1 }}>
           Logout
         </MenuItem>
       </Popover>

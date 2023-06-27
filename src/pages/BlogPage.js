@@ -1,50 +1,52 @@
 import { Helmet } from 'react-helmet-async';
+import { Link as RouterLink } from 'react-router-dom';
 // @mui
-import { Grid, Button, Container, Stack, Typography } from '@mui/material';
-// components
-import Iconify from '../components/iconify';
-import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
-// mock
-import POSTS from '../_mock/blog';
+import { styled } from '@mui/material/styles';
+import { Button, Typography, Container, Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-const SORT_OPTIONS = [
-  { value: 'latest', label: 'Latest' },
-  { value: 'popular', label: 'Popular' },
-  { value: 'oldest', label: 'Oldest' },
-];
+const StyledContent = styled('div')(({ theme }) => ({
+  maxWidth: 480,
+  margin: 'auto',
+  minHeight: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  padding: theme.spacing(12, 0),
+}));
 
 // ----------------------------------------------------------------------
 
-export default function BlogPage() {
+export default function Page404() {
   return (
-    <>
-      <Helmet>
-        <title> Dashboard: Blog | Minimal UI </title>
-      </Helmet>
+      <>
+        <Helmet>
+          <title> 404 Page Not Found |  Rhema Health Tracker </title>
+        </Helmet>
 
-      <Container>
-        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h4" gutterBottom>
-            Blog
-          </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
-            New Post
-          </Button>
-        </Stack>
+        <Container>
+          <StyledContent sx={{ textAlign: 'center', alignItems: 'center' }}>
+            <Typography variant="h3" paragraph>
+              Sorry, page not found!
+            </Typography>
 
-        <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
-          <BlogPostsSearch posts={POSTS} />
-          <BlogPostsSort options={SORT_OPTIONS} />
-        </Stack>
+            <Typography sx={{ color: 'text.secondary' }}>
+              Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL? Be sure to check your
+              spelling.
+            </Typography>
 
-        <Grid container spacing={3}>
-          {POSTS.map((post, index) => (
-            <BlogPostCard key={post.id} post={post} index={index} />
-          ))}
-        </Grid>
-      </Container>
-    </>
+            <Box
+                component="img"
+                src="/assets/illustrations/illustration_404.svg"
+                sx={{ height: 260, mx: 'auto', my: { xs: 5, sm: 10 } }}
+            />
+
+            <Button to="/" size="large" variant="contained" component={RouterLink}>
+              Go to Home
+            </Button>
+          </StyledContent>
+        </Container>
+      </>
   );
 }

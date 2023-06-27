@@ -1,4 +1,7 @@
+import {  useNavigate } from 'react-router-dom';
+
 import { Helmet } from 'react-helmet-async';
+
 // @mui
 import { styled } from '@mui/material/styles';
 import { Link, Container, Typography, Divider, Stack, Button } from '@mui/material';
@@ -9,6 +12,8 @@ import Logo from '../components/logo';
 import Iconify from '../components/iconify';
 // sections
 import { LoginForm } from '../sections/auth/login';
+
+
 
 // ----------------------------------------------------------------------
 
@@ -42,11 +47,15 @@ const StyledContent = styled('div')(({ theme }) => ({
 
 export default function LoginPage() {
   const mdUp = useResponsive('up', 'md');
+  const navigate = useNavigate();
+  const handleGetStarted = () => {
+    navigate('/signup');
+  };
 
   return (
     <>
       <Helmet>
-        <title> Login | Minimal UI </title>
+        <title> Login | Rhema Health Tracker </title>
       </Helmet>
 
       <StyledRoot>
@@ -63,20 +72,26 @@ export default function LoginPage() {
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
               Hi, Welcome Back
             </Typography>
-            <img src="/assets/illustrations/illustration_login.png" alt="login" />
+            <img src="/assets/illustrations/illustration_avatar.png" alt="login" />
           </StyledSection>
         )}
+
 
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Sign in to Minimal
+              Sign in to Rhema Health Tracker
             </Typography>
 
-            <Typography variant="body2" sx={{ mb: 5 }}>
-              Don’t have an account? {''}
-              <Link variant="subtitle2">Get started</Link>
-            </Typography>
+           <Typography variant="body2" sx={{ mb: 5 }}>
+               Don’t have an account? {''}
+             <Link variant="subtitle2" onClick={handleGetStarted} sx={{ cursor: 'pointer' }}>
+              Get started
+            </Link>
+           </Typography>
+
+
+
 
             <Stack direction="row" spacing={2}>
               <Button fullWidth size="large" color="inherit" variant="outlined">
